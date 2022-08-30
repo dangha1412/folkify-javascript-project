@@ -11,15 +11,12 @@ import 'regenerator-runtime/runtime';
 import View from './views/View.js';
 
 // https://forkify-api.herokuapp.com/v2
-if (module.hot) {
-  module.hot.accept();
-}
+
 ///////////////////////////////////////
 
 const controlRecipes = async function () {
   try {
     const id = window.location.hash.slice(1);
-    // console.log(id);
 
     if (!id) return;
     recipeView.renderSpinner();
@@ -55,7 +52,6 @@ const controlSearchResult = async function () {
 
     ////////3) render results //////
     resultView.render(model.getSearchResultPage());
-    // console.log(model.state.search.result);
 
     //////4) render initial pagination buttons
     paginationView.render(model.state.search);
@@ -67,7 +63,6 @@ const controlSearchResult = async function () {
 const controlPagination = function (goToPage) {
   ////////3) render new results //////
   resultView.render(model.getSearchResultPage(goToPage));
-  // console.log(model.state.search.result);
 
   //////4) render new pagination buttons
   paginationView.render(model.state.search);
